@@ -117,8 +117,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * Update the process noise covariance matrix.
      * Use noise_ax = 9 and noise_ay = 9 for your Q matrix.
    */
-   double dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;
-   previous_timestamp_ = measurement_pack.timestamp_;
+  double dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;
+  previous_timestamp_ = measurement_pack.timestamp_;
 
   // State transition matrix update
   ekf_.F_ = MatrixXd(4, 4);
@@ -156,12 +156,12 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * Update the state and covariance matrices.
    */
 
-  if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
+  if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {   //radar
     // Radar updates
     ekf_.H_ = tools.CalculateJacobian(ekf_.x_);
   	ekf_.R_ = R_radar_;
   	ekf_.UpdateEKF(measurement_pack.raw_measurements_);
-  } else {
+  } else {  // lidar
     // Laser updates
     ekf_.H_ = H_laser_;
   	ekf_.R_ = R_laser_;

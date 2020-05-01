@@ -1,3 +1,0 @@
-/Users/jinpengli/CarND-Extended-Kalman-Filter/xcode/CMakeFiles/ExtendedKF.dir
-/Users/jinpengli/CarND-Extended-Kalman-Filter/xcode/CMakeFiles/ALL_BUILD.dir
-/Users/jinpengli/CarND-Extended-Kalman-Filter/xcode/CMakeFiles/ZERO_CHECK.dir
