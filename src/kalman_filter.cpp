@@ -3,6 +3,7 @@
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
+
 KalmanFilter::KalmanFilter() {}
 
 KalmanFilter::~KalmanFilter() {}
@@ -63,7 +64,11 @@ void KalmanFilter::UpdateWithY(const VectorXd &y){
   MatrixXd S = H_ * P_ * Ht + R_;
   MatrixXd Si = S.inverse();
   MatrixXd K =  P_ * Ht * Si;
+
   // New state
+  // laser: K matrix 4x2, y 2x1 
+  // radar: K matrix 4x3, y 3x1
+  // x always 4x1
   x_ = x_ + (K * y);
   int x_size = x_.size();
   MatrixXd I = MatrixXd::Identity(x_size, x_size);
